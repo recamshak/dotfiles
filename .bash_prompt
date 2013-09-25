@@ -1,0 +1,129 @@
+# Shamelessly copied from https://github.com/paulirish/dotfiles
+
+default_username='bibi'
+battery_full=`cat /sys/class/power_supply/BAT0/charge_full`
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM=gnome-256color
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM=xterm-256color
+fi
+
+if tput setaf 1 &> /dev/null; then
+	tput sgr0
+	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+		MAGENTA=$(tput setaf 9)
+		ORANGE=$(tput setaf 172)
+		GREEN=$(tput setaf 190)
+		PURPLE=$(tput setaf 141)
+		WHITE=$(tput setaf 255)
+		BATTERY=$(tput setaf 28)$(tput setab 52)
+	else
+		MAGENTA=$(tput setaf 5)
+		ORANGE=$(tput setaf 4)
+		GREEN=$(tput setaf 2)
+		PURPLE=$(tput setaf 1)
+		WHITE=$(tput setaf 7)
+		BATTERY=$(tput setaf 2)$(tput setab 1)
+
+	fi
+	BOLD=$(tput bold)
+	RESET=$(tput sgr0)
+else
+	MAGENTA="\033[1;31m"
+	ORANGE="\033[1;33m"
+	GREEN="\033[1;32m"
+	PURPLE="\033[1;35m"
+	WHITE="\033[1;37m"
+	BOLD=""
+	RESET="\033[m"
+	BATTERY="\033[41;32m"
+fi
+
+
+function git_info() {
+	# check if we're in a git repo
+	git rev-parse --is-inside-work-tree &>/dev/null || return
+
+	# quickest check for what branch we're on
+	branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+
+	# check if it's dirty (via github.com/sindresorhus/pure)
+	dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
+
+	echo "$GREEN on $PURPLE$branch$dirty"
+}
+
+
+function hg_info() {
+	# check if we're in a mercurial repo
+	status=$(hg status 2>/dev/null) || return
+
+	# get the branch we're on
+	branch=$(hg branch)
+
+	# check if it's dirty
+	dirty=$([ -n "$status" ]&& echo -e "*")
+
+	echo "$WHITE on $PURPLE$branch$dirty"
+}
+
+
+function battery() {
+	# get the battery state
+	now=`cat /sys/class/power_supply/BAT0/charge_now`
+
+    # shows the battery state only if not 100%
+	if [ "$now" != "$battery_full" ]; then
+
+	    # get an unicode graph bar
+	    out=`echo "
+# coding: utf-8
+import math
+symbols = u' ▁▂▃▄▅▆▇█'
+print symbols[int(math.floor(8.99 * $now / $battery_full))].encode('utf8')" | python`
+
+		echo -e "$BATTERY$out$RESET"
+	fi
+}
+
+
+# Only show username/host if not default
+function usernamehost() {
+	if [ $USER != $default_username ]; then
+		echo "${MAGENTA}$USER ${WHITE}at ${ORANGE}$HOSTNAME ${WHITE}in ";
+	fi
+}
+
+
+# Only shows the last two subdirectories
+function short_pwd() {
+	leaf=$(basename "$PWD")
+	parent=$(basename $(dirname "$PWD"))
+
+	if [ "$leaf" == "/" ]; then
+	 	echo "/"
+	elif [ "$parent" == "/" ]; then
+	 	echo "/$leaf"
+	else
+	 	echo "$parent/$leaf"
+	fi
+}
+
+
+# iTerm Tab and Title Customization and prompt customization
+
+# Put the string " [bash]   hostname::/full/directory/path"
+# in the title bar using the command sequence
+# \[\e]2;[bash]   \h::\]$PWD\[\a\]
+
+# Put the penultimate and current directory
+# in the iterm tab
+# \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
+
+TERMINAL_TITLE="\[\e]2;\$(short_pwd)\[\a\]"
+
+PS1="\
+$TERMINAL_TITLE\
+${BOLD}\$(usernamehost)${GREEN}\w\$(git_info)\$(hg_info)${RESET}
+\$(battery)\$ "
