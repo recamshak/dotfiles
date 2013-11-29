@@ -81,7 +81,7 @@ function battery() {
 # coding: utf-8
 import math
 symbols = u' ▁▂▃▄▅▆▇█'
-print symbols[int(math.floor(8.99 * $now / $battery_full))].encode('utf8')" | python`
+print(symbols[int(math.floor(8.99 * $now / $battery_full))])" | PYTHONIOENCODING=UTF8 python`
 
 		echo -e "$BATTERY$out$RESET"
 	fi
