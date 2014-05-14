@@ -10,7 +10,7 @@ unset file
 
 # install powerline: https://powerline.readthedocs.org/en/latest/overview.html
 # setup the gnome terminal solarized color: https://github.com/sigurdga/gnome-terminal-colors-solarized
-source /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+#source $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
