@@ -1,6 +1,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" use 2 spaces for tab
+set expandtab
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+
 " close a buffer with ctrl-w
 "map <C-w> :bd<CR>
 
