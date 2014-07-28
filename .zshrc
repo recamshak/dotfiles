@@ -13,7 +13,8 @@ ZSH_THEME="agnoster"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tmk="cd ~/Projets/teachmekanji; workon tmk; ./dev.sh"
+alias rrm="rm -r"
+alias tmk="cd ~/Projets/teachmekanji; vagrant up && trap 'echo stopping vagrant' SIGINT; tail -f log/*; vagrant halt"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set number
+
 " use 2 spaces for tab
 set expandtab
 set softtabstop=2
@@ -11,6 +13,8 @@ set shiftwidth=2
 "map <C-w> :bd<CR>
 
 let mapleader = ","
+
+map <leader>e :Explore<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
