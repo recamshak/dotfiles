@@ -1,11 +1,23 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" use 2 spaces for tab
+set nowrap
+set number
+
+" use 4 spaces for tab
 set expandtab
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+
+" remove trailing space on save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " close a buffer with ctrl-w
 "map <C-w> :bd<CR>
@@ -29,8 +41,11 @@ colorscheme solarized
 set laststatus=2
 set rtp+=/home/bibi/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
+Bundle 'nvie/vim-flake8'
 Bundle 'pangloss/vim-javascript'
 Plugin 'git://git.wincent.com/command-t.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+map <Leader>r :w<CR>:!./%<CR>
