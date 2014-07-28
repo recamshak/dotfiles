@@ -118,7 +118,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen
-bindsym $mod+l exec i3lock -d -i /home/bibi/Locked.png
+bindsym $mod+l exec --no-startup-id i3lock -d -i /home/bibi/Locked.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -150,6 +150,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        mode hide
+        hidden_state hide
 }
 
 # Pulse Audio controls
