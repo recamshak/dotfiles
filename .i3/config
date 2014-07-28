@@ -13,12 +13,12 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+font pango:Inconsolata 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -27,7 +27,7 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
-bindsym $mod+Shift+Q kill
+bindsym $mod+Q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -169,5 +169,10 @@ bindsym XF86AudioPlay exec --no-startup-id cmus-remote -u
 bindsym XF86AudioNext exec --no-startup-id cmus-remote -n
 bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
 
+bindsym $mod+n exec --no-startup-id cmus-remote -n
+bindsym $mod+p exec --no-startup-id cmus-remote -r
+
+exec --no-startup-id /usr/bin/sh /home/bibi/.fehbg
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/ibus-daemon -rd
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
