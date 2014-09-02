@@ -11,10 +11,11 @@ bindkey -v
 ZSH_THEME="agnoster"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rrm="rm -r"
-alias tmk="cd ~/Projets/teachmekanji; vagrant up && trap 'echo stopping vagrant' SIGINT; tail -f log/*; vagrant halt"
+alias tmk="cd ~/Projets/tmk/api; ./start.sh"
+alias gdt="git difftool --no-prompt"
+alias gdtd="git difftool --no-prompt -d"
+alias vim="vimx"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -73,3 +74,4 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+bindkey -v
