@@ -30,39 +30,40 @@ bindsym $mod+Return exec gnome-terminal
 # kill focused window
 bindsym $mod+Q kill
 
+# Use synapse which is much faster
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -f -fn '-*-liberation mono-medium-r-normal-*-*-*-*-*-*-*-*-*' -nb '#900000'"
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -f -fn '-*-liberation mono-medium-r-normal-*-*-*-*-*-*-*-*-*' -nb '#900000'"
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+eacute focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+z split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -79,13 +80,14 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# disabled because $mod+space is used by synapse 
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -119,7 +121,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen
-bindsym $mod+l exec --no-startup-id i3lock -d -i /home/bibi/Locked.png
+bindsym $mod+Escape exec --no-startup-id i3lock -d -i /home/bibi/Locked.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -129,16 +131,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym eacute resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        #bindsym Left resize shrink width 10 px or 10 ppt
+        #bindsym Down resize grow height 10 px or 10 ppt
+        #bindsym Up resize shrink height 10 px or 10 ppt
+        #bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -155,7 +157,7 @@ bar {
         hidden_state hide
 }
 
-client.focused          #4c7899 #268bd2 #ffffff #2e9ef4
+client.focused #4c7899 #268bd2 #ffffff #2e9ef4
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && killall -USR1 i3status #increase sound volume
@@ -177,7 +179,17 @@ bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
 bindsym $mod+n exec --no-startup-id cmus-remote -n
 bindsym $mod+p exec --no-startup-id cmus-remote -r
 
+# activate bluetooth
+exec --no-startup-id sudo hciconfig hci0 up
+# load background image
 exec --no-startup-id /usr/bin/sh /home/bibi/.fehbg
+# NetworkManager applet
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/ibus-daemon -rd
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+
+exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
+exec --no-startup-id synapse -s
+
+# remap CapsLock to Escape
+exec --no-startup-id /usr/bin/xmodmap /home/bibi/.Xmodmap
