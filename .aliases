@@ -2,7 +2,7 @@ alias ci-start="aws ec2 start-instances --instance-ids i-e146a42c --output text"
 alias ci-stop="aws ec2 stop-instances --instance-ids i-e146a42c --output text"
 
 alias rrm="rm -r"
-alias tmk="gnome-terminal --working-directory=~/Projets/tmk/api -e ./start.sh; cd ~/Projets/tmk/app; npm start"
+alias tmk="gnome-terminal --working-directory=$HOME/Projets/tmk/api -e ./start.sh; cd ~/Projets/tmk/app; npm start"
 alias gdt="git difftool --no-prompt"
 alias gdtd="git difftool --no-prompt -d"
 alias vim="vimx"
