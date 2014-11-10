@@ -123,7 +123,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+Delete exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to shutdown the computer?' -b 'Yes, shutdown' 'poweroff'"
 
 # lock screen
-bindsym $mod+Escape exec --no-startup-id i3lock -d -i /home/bibi/Locked.png
+bindsym $mod+Escape exec --no-startup-id i3lock -dti /home/bibi/Locked.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
