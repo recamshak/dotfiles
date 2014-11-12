@@ -2,20 +2,11 @@
 export ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER="bibi"
 
-bindkey -v
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
-
-# Example aliases
-alias rrm="rm -r"
-alias tmk="cd ~/Projets/tmk/api; ./start.sh"
-alias gdt="git difftool --no-prompt"
-alias gdtd="git difftool --no-prompt -d"
-alias vim="vimx"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,6 +50,7 @@ plugins=(git yum django sudo vagrant wd virtualenv)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+source .aliases
 
 export PATH="/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/home/bibi/.local/bin:/home/bibi/bin:/home/bibi/.local/bin:/home/bibi/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -73,5 +65,3 @@ export EDITOR='vim'
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-bindkey -v

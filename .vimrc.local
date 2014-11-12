@@ -1,2 +1,8 @@
 set nofoldenable                  " Auto fold code
+let g:solarized_termcolors=16
 
+" remove trailing white spaces
+autocmd FileType coffee autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = $VIRTUAL_ENV
