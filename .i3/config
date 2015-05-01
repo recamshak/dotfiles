@@ -184,6 +184,8 @@ bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
 bindsym $mod+n exec --no-startup-id cmus-remote -n
 bindsym $mod+shift+p exec --no-startup-id cmus-remote -r
 
+exec --no-startup-id /usr/libexec/gnome-settings-daemon
+
 # activate bluetooth
 exec --no-startup-id sudo hciconfig hci0 up
 # load background image
