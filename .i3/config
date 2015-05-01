@@ -120,7 +120,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # power off $mod+Shift+Delete
-bindsym $mod+Shift+Delete exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to shutdown the computer?' -b 'Yes, shutdown' 'poweroff'"
+bindsym $mod+Shift+Delete exec --no-startup-id "zenity --question --text='Really shutdown ?' && poweroff"
+bindsym XF86PowerOff exec --no-startup-id poweroff
 
 # lock screen
 bindsym $mod+Escape exec --no-startup-id i3lock -dti /home/bibi/Locked.png
