@@ -197,6 +197,3 @@ exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
 exec --no-startup-id synapse -s
-
-# remap CapsLock to Escape
-exec --no-startup-id /usr/bin/xmodmap /home/bibi/.Xmodmap
