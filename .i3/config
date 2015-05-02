@@ -124,7 +124,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id "zenity --question --text='Really
 bindsym XF86PowerOff exec --no-startup-id poweroff
 
 # lock screen
-bindsym $mod+Escape exec --no-startup-id i3lock -dti /home/bibi/Locked.png
+bindsym $mod+Escape exec --no-startup-id i3lock -dti .lock.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -189,7 +189,7 @@ exec --no-startup-id /usr/libexec/gnome-settings-daemon
 # activate bluetooth
 exec --no-startup-id sudo hciconfig hci0 up
 # load background image
-exec --no-startup-id feh --bg-scale '/usr/share/backgrounds/gnome/Blinds.jpg'
+exec --no-startup-id feh --bg-scale .background.png
 # NetworkManager applet
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/ibus-daemon -rd
