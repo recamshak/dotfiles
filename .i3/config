@@ -189,11 +189,11 @@ exec --no-startup-id /usr/libexec/gnome-settings-daemon
 # activate bluetooth
 exec --no-startup-id sudo hciconfig hci0 up
 # load background image
-exec --no-startup-id /usr/bin/sh /home/bibi/.fehbg
+exec --no-startup-id feh --bg-scale '/usr/share/backgrounds/gnome/Blinds.jpg'
 # NetworkManager applet
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/ibus-daemon -rd
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
-exec --no-startup-id synapse -s
+exec --no-startup-id kupfer --no-splash
