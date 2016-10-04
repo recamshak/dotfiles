@@ -1,5 +1,6 @@
 UnBundle 'bling/vim-bufferline'
 UnBundle 'spf13/vim-autoclose'
+UnBundle 'jiangmiao/auto-pairs'
 
 Bundle 'tpope/vim-unimpaired'
 Bundle 'digitaltoad/vim-jade'
