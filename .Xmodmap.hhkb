@@ -1,0 +1,9 @@
+clear control
+clear Mod1
+
+keycode 108 = Control_R
+add control = Control_R
+
+add Mod1 = Alt_L
+
+keycode 37 = Escape
