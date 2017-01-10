@@ -10,3 +10,6 @@ let g:pymode_virtualenv_path = $VIRTUAL_ENV
 " makes inotify work as expected
 set nobackup
 set noswapfile
+
+set clipboard=unnamed
+set clipboard+=unnamedplus
