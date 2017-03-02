@@ -7,6 +7,8 @@ autocmd FileType coffee autocmd BufWritePre <buffer> call StripTrailingWhitespac
 let g:pymode_virtualenv = 1
 let g:pymode_virtualenv_path = $VIRTUAL_ENV
 
+let g:ctrlp_working_path_mode = 'a'
+
 " makes inotify work as expected
 set nobackup
 set noswapfile
