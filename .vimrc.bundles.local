@@ -1,7 +1,13 @@
 UnBundle 'bling/vim-bufferline'
 UnBundle 'spf13/vim-autoclose'
 UnBundle 'jiangmiao/auto-pairs'
+UnBundle 'amirh/HTML-AutoCloseTag'
+UnBundle 'Shougo/neosnippet'
+UnBundle 'Shougo/neosnippet-snippets'
 
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus.git'
+Bundle 'fisadev/vim-isort'
+Bundle 'fatih/vim-go'

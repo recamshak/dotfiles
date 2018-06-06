@@ -7,7 +7,12 @@ autocmd FileType coffee autocmd BufWritePre <buffer> call StripTrailingWhitespac
 let g:pymode_virtualenv = 1
 let g:pymode_virtualenv_path = $VIRTUAL_ENV
 
+" ctrl+p only in the current directory
 let g:ctrlp_working_path_mode = 'a'
+
+" javascript plugin on pug/jade made jade editing very slow
+let g:polyglot_disabled = ['javascript']
+let g:pymode_python = 'python3'
 
 " makes inotify work as expected
 set nobackup
