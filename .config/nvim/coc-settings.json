@@ -9,5 +9,6 @@
       }
     }
   },
-  "codeLens.enable": true
+  "codeLens.enable": false,
+  "coc.preferences.formatOnSaveFiletypes": ["typescript"]
 }

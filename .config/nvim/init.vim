@@ -33,7 +33,7 @@ nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
 " Look and feel
-
+set termguicolors
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=4                " Use indents of 4 spaces
@@ -64,7 +64,6 @@ call minpac#add('mhinz/vim-grepper')
 call minpac#add('lifepillar/vim-solarized8')
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
-call minpac#add('evanleck/vim-svelte')
 call minpac#add('tpope/vim-fugitive')
 
 command! Pu call minpac#update()
@@ -167,7 +166,7 @@ set clipboard+=unnamedplus
 
 " Grepper
 let g:grepper       = {}
-let g:grepper.tools = ['grep', 'git', 'rg']
+let g:grepper.tools = ['rg', 'grep', 'git']
 
 " Search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
@@ -182,3 +181,5 @@ autocmd BufWritePre *.elm :Fmt
 
 " fugitive
 set statusline+=%{FugitiveStatusline()}
+
+let g:python3_host_prog = '/home/bibi/miniconda3/envs/py38/bin/python'

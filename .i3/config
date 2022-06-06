@@ -19,13 +19,15 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:Inconsolata 13
+font pango:Fira Code 11
+
+hide_edge_borders both
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Q kill
@@ -184,8 +186,6 @@ bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r
 bindsym $mod+n exec --no-startup-id cmus-remote -n
 bindsym $mod+shift+p exec --no-startup-id cmus-remote -r
 
-exec --no-startup-id /usr/libexec/gnome-settings-daemon
-
 # activate bluetooth
 exec --no-startup-id sudo hciconfig hci0 up
 # load background image
@@ -193,7 +193,6 @@ exec --no-startup-id feh --bg-scale .background.png
 # NetworkManager applet
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/ibus-daemon -rd
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/xfce-polkit
 
-exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
-exec --no-startup-id kupfer --no-splash
+exec --no-startup-id ulauncher --no-window-shadow --hide-window
